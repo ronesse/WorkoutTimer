@@ -2,276 +2,559 @@
   box-sizing: border-box;
 }
 
+
 :root {
-  --bg: #111827;
-  --card: #1f2937;
-  --text: #ffffff;
-  --muted: #d1d5db;
-  --accent: #22c55e;
-  --danger: #dc2626;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
 
-html, body {
+
+html,
+body {
   margin: 0;
   min-height: 100%;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  background: #111827;
+  color: #ffffff;
 }
+
 
 body {
   min-height: 100dvh;
-  transition: background 180ms ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
+
 
 body.work {
   background: #15803d;
 }
+
 
 body.work-warning {
   background: #facc15;
   color: #111827;
 }
 
+
 body.rest {
   background: #2563eb;
 }
+
 
 body.rest-warning {
   background: #f59e0b;
   color: #111827;
 }
 
+
 body.finished {
   background: #7c3aed;
 }
 
-button, input {
+
+button,
+input {
   font: inherit;
 }
+
 
 .app {
   width: min(100%, 720px);
   margin: 0 auto;
-  padding: max(18px, env(safe-area-inset-top)) 18px max(24px, env(safe-area-inset-bottom));
+
+  padding:
+    max(18px, env(safe-area-inset-top))
+    18px
+    max(24px, env(safe-area-inset-bottom));
 }
+
+
+/* Toppområde */
 
 .topbar {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
 }
 
+
 .eyebrow {
-  margin: 0;
-  font-size: .75rem;
-  letter-spacing: .18em;
-  font-weight: 800;
-  opacity: .8;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  font-weight: 900;
+  opacity: 0.8;
 }
+
 
 h1 {
-  margin: 2px 0 0;
-  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  margin: 3px 0 0;
+
+  font-size:
+    clamp(
+      1.55rem,
+      5vw,
+      2.2rem
+    );
 }
 
+
+/* Generelle knapper */
+
 .icon-btn,
-.small-btn,
+.primary-btn,
 .secondary-btn,
-.primary-btn {
+.small-btn {
   border: 0;
   border-radius: 16px;
+  font-weight: 900;
   cursor: pointer;
-  font-weight: 800;
 }
+
 
 .icon-btn {
   width: 52px;
   height: 52px;
-  font-size: 1.35rem;
-  background: rgba(255,255,255,.18);
+
+  background: rgba(255, 255, 255, 0.17);
   color: inherit;
+
+  font-size: 1.35rem;
 }
+
+
+/* Timerkort */
 
 .timer-card {
   margin-top: 18px;
   min-height: 57vh;
-  border-radius: 28px;
+
   padding: 22px;
-  background: rgba(17,24,39,.56);
-  box-shadow: 0 18px 50px rgba(0,0,0,.25);
+
+  border-radius: 28px;
+
+  background: rgba(17, 24, 39, 0.56);
+
+  box-shadow:
+    0 18px 50px
+    rgba(0, 0, 0, 0.27);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
+
   backdrop-filter: blur(8px);
 }
 
+
 .work-warning .timer-card,
 .rest-warning .timer-card {
-  background: rgba(255,255,255,.52);
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.52
+    );
 }
 
-.round-row {
+
+.meta-row {
   align-self: stretch;
+
   display: flex;
   justify-content: space-between;
+
   gap: 12px;
-  color: inherit;
-  opacity: .85;
-  font-weight: 700;
+
+  font-weight: 800;
+  opacity: 0.88;
 }
+
 
 .phase {
   margin-top: auto;
+
+  font-size:
+    clamp(
+      2.3rem,
+      10vw,
+      5rem
+    );
+
   font-weight: 1000;
-  font-size: clamp(2.3rem, 10vw, 5rem);
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
 }
+
 
 .message {
   min-height: 2.5rem;
   margin-top: 8px;
-  font-size: clamp(1.15rem, 5vw, 2rem);
-  font-weight: 900;
+
+  font-size:
+    clamp(
+      1.15rem,
+      5vw,
+      2rem
+    );
+
+  font-weight: 950;
 }
+
 
 .time {
-  font-size: clamp(7rem, 34vw, 15rem);
-  line-height: .95;
-  font-variant-numeric: tabular-nums;
+  font-size:
+    clamp(
+      7rem,
+      34vw,
+      15rem
+    );
+
+  line-height: 0.95;
+
+  font-variant-numeric:
+    tabular-nums;
+
   font-weight: 1000;
-  letter-spacing: -.06em;
+
+  letter-spacing: -0.06em;
 }
 
+
 .next {
-  font-weight: 750;
   font-size: 1.05rem;
-  opacity: .9;
+  font-weight: 800;
+  opacity: 0.9;
 }
+
+
+/* Fremdriftslinje */
 
 .progress-track {
   width: 100%;
   height: 13px;
+
   margin-top: auto;
+
   border-radius: 99px;
   overflow: hidden;
-  background: rgba(255,255,255,.25);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.25
+    );
 }
 
+
 .progress-bar {
-  width: 0%;
+  width: 0;
   height: 100%;
+
   border-radius: inherit;
+
   background: currentColor;
-  transition: width 200ms linear;
+
+  transition:
+    width 0.2s linear;
 }
+
+
+/* Spotify-knapp */
+
+.spotify-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  min-height: 58px;
+
+  margin-top: 16px;
+
+  padding: 14px 18px;
+
+  border-radius: 16px;
+
+  background: #1ed760;
+  color: #111827;
+
+  font-size: 1.05rem;
+  font-weight: 900;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 8px 24px
+    rgba(0, 0, 0, 0.22);
+
+  transition:
+    transform 0.1s ease,
+    filter 0.1s ease;
+}
+
+
+.spotify-btn:hover {
+  filter: brightness(1.05);
+}
+
+
+.spotify-btn:active {
+  transform: scale(0.98);
+}
+
+
+.spotify-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 29px;
+  height: 29px;
+
+  border-radius: 50%;
+
+  background: #111827;
+  color: #1ed760;
+
+  font-size: 1.1rem;
+  font-weight: 1000;
+}
+
+
+/* Timerknapper */
 
 .controls {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+
+  grid-template-columns:
+    1.6fr 1fr;
+
   gap: 12px;
+
   margin-top: 16px;
 }
+
 
 .primary-btn,
 .secondary-btn {
   min-height: 60px;
+
   padding: 14px 18px;
-  font-size: 1.1rem;
+
+  font-size: 1.08rem;
 }
+
 
 .primary-btn {
   background: #ffffff;
   color: #111827;
 }
 
+
 .secondary-btn {
-  background: rgba(255,255,255,.18);
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.17
+    );
+
   color: inherit;
-  border: 1px solid rgba(255,255,255,.25);
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.25
+    );
 }
 
-.settings-panel {
-  margin-top: 16px;
-  padding: 20px;
-  border-radius: 22px;
-  background: rgba(17,24,39,.82);
-  color: #fff;
+
+.primary-btn:active,
+.secondary-btn:active,
+.small-btn:active,
+.icon-btn:active {
+  transform: scale(0.98);
 }
+
+
+/* Innstillinger */
+
+.settings {
+  margin-top: 16px;
+
+  padding: 20px;
+
+  border-radius: 22px;
+
+  background:
+    rgba(
+      17,
+      24,
+      39,
+      0.9
+    );
+
+  color: #ffffff;
+}
+
 
 .hidden {
   display: none;
 }
 
-.settings-panel h2,
-.settings-panel h3 {
+
+.settings h2,
+.settings h3 {
   margin-top: 0;
 }
 
-.toggle-row {
+
+.toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   min-height: 48px;
-  border-bottom: 1px solid rgba(255,255,255,.12);
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
 }
 
-.toggle-row input {
+
+.toggle input {
   width: 24px;
   height: 24px;
 }
 
-.music-block {
+
+/* Lokale musikkfiler */
+
+.music {
   margin: 18px 0;
+
   padding: 16px;
+
   border-radius: 16px;
-  background: rgba(255,255,255,.08);
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
 }
 
-.music-block p {
+
+.music p {
   color: #d1d5db;
 }
 
-.music-controls {
+
+.music-buttons {
   display: flex;
   gap: 10px;
+
   margin: 12px 0;
 }
 
+
 .small-btn {
   padding: 11px 14px;
+
   background: #e5e7eb;
   color: #111827;
 }
 
+
 .small-btn:disabled {
-  opacity: .45;
+  opacity: 0.45;
+  cursor: default;
 }
 
-.music-block input[type="range"] {
+
+.volume {
+  display: block;
+}
+
+
+.volume input {
   width: 100%;
 }
+
 
 .track-name {
   overflow-wrap: anywhere;
 }
 
+
+/* Bunntekst */
+
 footer {
-  padding: 18px 4px 0;
+  padding-top: 18px;
+
   text-align: center;
-  font-weight: 700;
-  opacity: .8;
+
+  font-weight: 800;
+  opacity: 0.8;
 }
 
+
+/* Små skjermer */
+
+@media (max-width: 420px) {
+
+  .controls {
+    grid-template-columns:
+      1.4fr 1fr;
+  }
+
+
+  .spotify-btn {
+    font-size: 0.98rem;
+  }
+
+}
+
+
+/* Telefoner med liten skjermhøyde */
+
 @media (max-height: 720px) {
+
   .timer-card {
     min-height: 50vh;
   }
 
+
   .time {
-    font-size: clamp(5rem, 25vw, 10rem);
+    font-size:
+      clamp(
+        5rem,
+        25vw,
+        10rem
+      );
   }
+
 }
