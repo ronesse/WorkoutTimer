@@ -1,0 +1,17 @@
+{
+  "name": "WorkoutTimer Pro",
+  "short_name": "WorkoutTimer",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#15803d",
+  "description": "Kettlebell- og intervalltimer med pip, norsk stemme og spilleliste.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
