@@ -2,217 +2,87 @@
 <html lang="no">
 <head>
   <meta charset="utf-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, viewport-fit=cover"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#15803d">
-
-  <meta
-    name="description"
-    content="Mobil treningsklokke for kettlebell og intervalltrening"
-  >
-
+  <meta name="description" content="Mobil treningsklokke for kettlebell og intervalltrening">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <title>WorkoutTimer</title>
   <link rel="stylesheet" href="style.css">
-
-  <title>WorkoutTimer Pro</title>
 </head>
-
 <body class="ready">
-
   <main class="app">
-
     <header class="topbar">
-
       <div>
-        <div class="eyebrow">
-          KETTLEBELL 60/30
-        </div>
-
-        <h1>WorkoutTimer Pro</h1>
+        <p class="eyebrow">KETTLEBELL</p>
+        <h1>WorkoutTimer</h1>
       </div>
-
-      <button
-        id="settingsBtn"
-        class="icon-btn"
-        aria-label="Innstillinger"
-      >
-        ⚙️
-      </button>
-
+      <button id="settingsBtn" class="icon-btn" aria-label="Vis innstillinger">⚙️</button>
     </header>
 
-
-    <section
-      class="timer-card"
-      aria-live="polite"
-    >
-
-      <div class="meta-row">
-
-        <span id="roundText">
-          Runde 1 av 20
-        </span>
-
-        <span id="totalText">
-          30:00 igjen
-        </span>
-
+    <section id="timerCard" class="timer-card" aria-live="polite">
+      <div class="round-row">
+        <span id="roundText">Runde 1 av 20</span>
+        <span id="totalTime">30:00 igjen</span>
       </div>
 
+      <div id="phaseText" class="phase">KLAR</div>
+      <div id="messageText" class="message">Trykk start når du er klar</div>
+      <div id="timeText" class="time">60</div>
+      <div id="nextText" class="next">Neste: Hvile 30 sek</div>
 
-      <div
-        id="phaseText"
-        class="phase"
-      >
-        KLAR
+      <div class="progress-track" aria-hidden="true">
+        <div id="progressBar" class="progress-bar"></div>
       </div>
-
-
-      <div
-        id="messageText"
-        class="message"
-      >
-        Trykk start når du er klar
-      </div>
-
-
-      <div
-        id="timeText"
-        class="time"
-      >
-        60
-      </div>
-
-
-      <div
-        id="nextText"
-        class="next"
-      >
-        Neste: Hvile 30 sek
-      </div>
-
-
-      <div class="progress-track">
-
-        <div
-          id="progressBar"
-          class="progress-bar"
-        ></div>
-
-      </div>
-
     </section>
-
-
-    <a
-      id="spotifyBtn"
-      class="spotify-btn"
-      href="https://open.spotify.com/playlist/07ZJHWuOvmBKS8g4QDJZ6s?si=3Bs6GGTVSIScv_9NXaRGgA&utm_source=copy-link&pi=n-RYwALhRfu2s"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <span class="spotify-icon">♫</span>
-
-      <span>
-        Åpne Spotify-spilleliste
-      </span>
-    </a>
-
 
     <section class="controls">
-
-      <button
-        id="startPauseBtn"
-        class="primary-btn"
-      >
-        ▶ Start
-      </button>
-
-      <button
-        id="resetBtn"
-        class="secondary-btn"
-      >
-        ↺ Nullstill
-      </button>
-
+      <button id="startPauseBtn" class="primary-btn">▶ Start</button>
+      <button id="resetBtn" class="secondary-btn">↺ Nullstill</button>
     </section>
 
-
-    <section
-      id="settingsPanel"
-      class="settings hidden"
-    >
-
+    <section id="settingsPanel" class="settings-panel hidden">
       <h2>Innstillinger</h2>
 
-
-      <label class="toggle">
-
+      <label class="toggle-row">
         <span>Pip</span>
-
-        <input
-          id="beepToggle"
-          type="checkbox"
-          checked
-        >
-
+        <input id="beepToggle" type="checkbox" checked>
       </label>
 
-
-      <label class="toggle">
-
+      <label class="toggle-row">
         <span>Norsk stemme</span>
-
-        <input
-          id="voiceToggle"
-          type="checkbox"
-          checked
-        >
-
+        <input id="voiceToggle" type="checkbox" checked>
       </label>
 
-
-      <label class="toggle">
-
+      <label class="toggle-row">
         <span>Vibrasjon</span>
-
-        <input
-          id="vibrateToggle"
-          type="checkbox"
-          checked
-        >
-
+        <input id="vibrateToggle" type="checkbox" checked>
       </label>
 
+      <div class="music-block">
+        <h3>Spilleliste fra telefonen</h3>
+        <p>Velg flere lydfiler. De spilles i rekkefølge under økten.</p>
+        <input id="musicFiles" type="file" accept="audio/*" multiple>
+        <div class="music-controls">
+          <button id="musicPlayBtn" class="small-btn" disabled>▶ Musikk</button>
+          <button id="musicNextBtn" class="small-btn" disabled>⏭ Neste</button>
+        </div>
+        <label>
+          Musikkvolum
+          <input id="musicVolume" type="range" min="0" max="1" step="0.05" value="0.55">
+        </label>
+        <p id="trackName" class="track-name">Ingen musikk valgt</p>
+      </div>
 
-      <div class="music">
+      <button id="testSoundBtn" class="small-btn">Test pip og stemme</button>
+    </section>
 
-        <h3>Musikkfiler fra telefonen</h3>
+    <footer>
+      60 sek arbeid · 30 sek hvile · 20 runder
+    </footer>
+  </main>
 
-        <p>
-          Dette er valgfritt. Du kan enten bruke Spotify-knappen
-          eller velge lokale lydfiler fra telefonen.
-        </p>
-
-        <input
-          id="musicFiles"
-          type="file"
-          accept="audio/*"
-          multiple
-        >
-
-
-        <div class="music-buttons">
-
-          <button
-            id="musicPlayBtn"
-            class="small-btn"
-            disabled
-          >
-            ▶ Musikk
-          </
+  <audio id="musicPlayer" preload="metadata"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
